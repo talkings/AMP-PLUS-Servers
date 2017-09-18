@@ -60,8 +60,19 @@ class rock {
     async getServersInterface (){
         const fn = await this.readFileInterface('servers');
         let obj = {};
-         for (let j in fn) {
-            obj[j] = fn[j](this.inspect.app);
+        for (let j in fn) {
+            let handlder = Object.assign(fn[j](this.inspect.app), {});
+            for (let item in handlder){
+                handlder[item] = async ( ctx ) => {
+                    try {
+                        let data = await fn[j](this.inspect.app)[item]( ctx );
+                        return data;
+                    } catch (error) {
+                        await ctx.error(201, error);
+                    }
+                };
+            }
+            obj[j] = handlder;
         }
         this.inspect.app.servers = obj;
     }

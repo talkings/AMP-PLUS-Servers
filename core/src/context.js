@@ -11,9 +11,9 @@ module.exports = async function (){
 
     await this.renderMiddleware( app );
     await this.renderRouter( app, router );
-    // app.on('error', function(err){
-    //     console.log(`The service start error msg:${ err }`);
-    // });
+    app.on('error', function(err){
+        console.log(`The service start error msg:${ err }`);
+    });
     http.createServer(app.callback()).listen(this.options.port);
     console.log(`The service start successfully port ${ this.options.port }`);
 };
