@@ -17,6 +17,7 @@ exports.mysql =  {
  * mongodb Configure
  */
 exports.mongodb = {
+	'basepath': 'mongodb://127.0.0.1:27017/',
 	//数据库
 	'database' : 'AMP',
 	//用户名

@@ -1,8 +1,8 @@
 
 module.exports =  function( app ){
-	this.get('/search', app.controller.Users.resUserInfo )
-	/**
-	 * 注册用户接口
-	 */
-	.post('/add', app.controller.Users.addUser );
+	const path = '/users';
+	//user register 注册用户接口
+	this.post(`${ path }/register`, app.controller.users.register )
+	//user login 用户登录接口
+	.post(`${ path }/login`, app.controller.users.login );
 };

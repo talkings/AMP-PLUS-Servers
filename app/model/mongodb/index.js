@@ -1,8 +1,9 @@
 const mongoose = require('mongoose');
 const path = require('path');
 const fs = require('fs');
+const { mongodb } = require('../../../config/config-db.js');
 mongoose.connection
-    .on('error', error => {
+    .on('error', ( error ) => {
        console.log(`mongodb Connection has been established error msg:${error}`);
     })
     .on('close', () => {
@@ -12,7 +13,8 @@ mongoose.connection
         let info = mongoose.connections[0];
         console.log(`mongodb Connection has been established successfully host ${info.host} port ${info.port}`);
     });
-mongoose.connect('mongodb://127.0.0.1:27017/AMP', { 'useMongoClient' : true});
+    
+mongoose.connect(`${mongodb.basepath}${mongodb.database }`, { 'useMongoClient' : true});
 
 //读取文件目录
 fs.readdirSync(path.join(__dirname, './schema')).filter(function (file) {

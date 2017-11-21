@@ -11,32 +11,27 @@ module.exports = function(sequelize, DataTypes) {
     },
     user: {
       type: DataTypes.STRING,
-      allowNull: false,
-      unique: true
+      defaultValue : null
     },
     email: {
       type: DataTypes.STRING,
       allowNull: false,
+      //不可以重复
       unique: true
+    },
+    login_date : {
+      type: DataTypes.DATE,
+      allowNull: true
     },
     phone: {
       type: DataTypes.STRING,
-      allowNull: false,
-      unique: true
+      defaultValue : null
     },
     password: {
       type: DataTypes.STRING(255),
       allowNull: false
     },
-    // created_at: {
-    //   type: DataTypes.DATE,
-    //   allowNull: false
-    // },
-    // updated_at: {
-    //   type: DataTypes.DATE,
-    //   allowNull: false
-    // },
-    json_str: {
+    json_str: { 
       type: DataTypes.TEXT,
       allowNull: true
     }

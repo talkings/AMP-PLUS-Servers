@@ -1,5 +1,5 @@
 module.exports = {
-    'middleware' : ['gzip', 'res', 'bodyparser', 'koaLogger', 'koaCors'],
+    'middleware' : ['gzip', 'res', 'koaBody', 'koaLogger', 'koaCors'],
     'koaCors' : {
         'exposeHeaders' : ['WWW-Authenticate', 'Server-Authorization'],
         'maxAge' : 5,

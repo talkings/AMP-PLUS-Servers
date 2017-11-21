@@ -63,9 +63,9 @@ class rock {
         for (let j in fn) {
             let handlder = Object.assign(fn[j](this.inspect.app), {});
             for (let item in handlder){
-                handlder[item] = async ( ctx ) => {
+                handlder[item] = async ( ctx, ...param ) => {
                     try {
-                        let data = await fn[j](this.inspect.app)[item]( ctx );
+                        let data = await fn[j](this.inspect.app)[item]( ctx, ...param );
                         return data;
                     } catch (error) {
                         await ctx.error(201, error);
@@ -81,9 +81,9 @@ class rock {
      */
     async renderRouter (app, router){
         const fn = await this.readFileInterface('router');
+        //设置请求前缀
+        router.prefix(`/v1`);
         for (let j in fn) {
-            //设置请求前缀
-            router.prefix(`/${j}`);
             fn[j].call(router, this.inspect.app);
         }
         app.use(router.routes(), router.allowedMethods());

@@ -1,21 +1,24 @@
 module.exports = ( app ) => {
 	const User = {
 		/**
-		 * 查询用户信息
+		 * 查询用户信息表字段
 		 */
-		async getUserInfo () {
-			//const model = app.model.mongodb.getModel('product');
-			//model.find();
+		async searchField () {
 			const data = await app.model.mysql.user.findAll();
 			return data;
 		},
 		//注册添加用户信息
-		async addUser ( ctx ){
-			const data = await app.model.mysql.user.create({
-				user : 'admin',
-				email : '821249752@qq.com',
-				phone : '18611857982',
-				password : 'fqx177777'
+		async register ( ctx, params){
+			const data = await app.model.mysql.user.create(params);
+			return data;
+		},
+		async login (ctx, params){
+			const data = await app.model.mysql.user.findOne({
+				attributes : ['id', 'email'],
+				where: {
+					email: params.email,
+					password: params.password
+				}
 			});
 			return data;
 		}
