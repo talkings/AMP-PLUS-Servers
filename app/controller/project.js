@@ -5,12 +5,8 @@ module.exports = function( app ){
          */
         async addMockProduct( ctx ) {
             const params = ctx.request.body;
-            try {
-                const data = await app.servers.product.addMockProduct(ctx, params);
+                const data = await app.servers.project.addMockProduct(ctx, params);
                 if (data) ctx.success(data);
-            } catch (error) {
-                ctx.error(500, error);
-            }
         },
         /**
          * 修改mock项目
@@ -23,7 +19,7 @@ module.exports = function( app ){
          */ 
         async getMockProduct( ctx ) {
             const params = ctx.query;
-            const data = await app.servers.product.getMockProduct(ctx, params);
+            const data = await app.servers.project.getMockProduct(ctx, params);
             if (data) ctx.success(data);
         }
     };

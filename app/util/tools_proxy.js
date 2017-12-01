@@ -5,7 +5,7 @@ class Proxy {
     constructor ( options ) {
         this.options = {
             'method' : 'GET',
-            'url' : 'https://cnodejs.org/api/v1/topics', 
+            'url': options.url, 
             //'postambleCRLF' : true,
             //'form' : {},
             //json : true,

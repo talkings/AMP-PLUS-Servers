@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const path = require('path');
 const fs = require('fs');
 const { mongodb } = require('../../../config/config-db.js');
+mongoose.Promise = global.Promise;
 mongoose.connection
     .on('error', ( error ) => {
        console.log(`mongodb Connection has been established error msg:${error}`);

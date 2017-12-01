@@ -16,9 +16,9 @@ class rock {
             'servers' : path.join( _dir, 'app/servers/'),
             'router' : path.join( _dir, 'app/router/'),
             'config' : path.join( _dir, 'config/'),
-            'middleware' : path.join(_dir, 'app/middleware/')
+            'middleware' : path.join(_dir, 'app/middleware/'),
+            'util': path.join(_dir, 'app/util/')
         };
-
         this.inspect = {
             'app' : {
                 'controller' : {},
@@ -61,18 +61,7 @@ class rock {
         const fn = await this.readFileInterface('servers');
         let obj = {};
         for (let j in fn) {
-            let handlder = Object.assign(fn[j](this.inspect.app), {});
-            for (let item in handlder){
-                handlder[item] = async ( ctx, ...param ) => {
-                    try {
-                        let data = await fn[j](this.inspect.app)[item]( ctx, ...param );
-                        return data;
-                    } catch (error) {
-                        await ctx.error(201, error);
-                    }
-                };
-            }
-            obj[j] = handlder;
+            obj[j] = fn[j](this.inspect.app);
         }
         this.inspect.app.servers = obj;
     }
@@ -118,6 +107,13 @@ class rock {
         }); 
     }
     /**
+     * 渲染工具类
+     */
+    async renderUtils(){
+        const fn = await this.readFileInterface('util');
+        this.inspect.app.util = fn;
+    }
+    /**
      * 获取数据表抽象字典实例对象
      */
     async getModelInterface(){
@@ -131,8 +127,19 @@ class rock {
     async getCollectHandlder (){
         const fn = await this.readFileInterface('controller');
         let obj = {};
-         for (let j in fn) {
-            obj[j] = fn[j](this.inspect.app);
+        for (let j in fn) {
+            let handlder = Object.assign(fn[j](this.inspect.app), {});
+            for (let item in handlder) {
+                handlder[item] = async (ctx, ...param) => {
+                    try {
+                        let data = await fn[j](this.inspect.app)[item](ctx, ...param);
+                        return data;
+                    } catch (error) {
+                        await ctx.error(201, error.message || error);
+                    }
+                };
+            }
+            obj[j] = handlder;
         }
         this.inspect.app.controller = obj;
        
@@ -146,6 +153,7 @@ class rock {
         await this.getModelInterface();
         await this.getServersInterface();
         await this.getCollectHandlder();
+        await this.renderUtils();
         context.call( this );
     }
 }

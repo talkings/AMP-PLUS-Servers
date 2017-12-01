@@ -1,37 +1,53 @@
 /* jshint indent: 2 */
 
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('history_handler', {
+  return sequelize.define('product_group', {
     product_id: {
+      type: DataTypes.STRING(255),
+      allowNull: true
+    },
+    product_version: {
+      type: DataTypes.STRING(255),
+      allowNull: true
+    },
+    product_group: {
+      type: DataTypes.STRING(255),
+      allowNull: true
+    },
+    api_id: {
       type: DataTypes.STRING(255),
       allowNull: false,
       primaryKey: true
     },
-    userid: {
+    api_name: {
       type: DataTypes.STRING(255),
       allowNull: true
     },
-    username: {
+    api_describe: {
       type: DataTypes.STRING(255),
       allowNull: true
     },
-    type: {
+    api_url: {
       type: DataTypes.STRING(255),
       allowNull: true
     },
-    opponent: {
+    api_type: {
       type: DataTypes.STRING(255),
+      allowNull: true
+    },
+    api_state: {
+      type: DataTypes.INTEGER(11),
       allowNull: true
     },
     created_at: {
       type: DataTypes.DATE,
-      allowNull: false
+      allowNull: true
     },
     updated_at: {
       type: DataTypes.DATE,
-      allowNull: false
+      allowNull: true
     }
   }, {
-    tableName: 'history_handler'
+    tableName: 'product_group'
   });
 };

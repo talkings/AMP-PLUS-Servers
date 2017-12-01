@@ -1,37 +1,37 @@
 /* jshint indent: 2 */
 
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('history_handler', {
-    product_id: {
+  return sequelize.define('product_authorization', {
+    userid: {
       type: DataTypes.STRING(255),
       allowNull: false,
       primaryKey: true
     },
-    userid: {
+    product_id: {
       type: DataTypes.STRING(255),
       allowNull: true
     },
-    username: {
-      type: DataTypes.STRING(255),
+    master: {
+      type: DataTypes.INTEGER(255),
       allowNull: true
     },
-    type: {
-      type: DataTypes.STRING(255),
+    developer: {
+      type: DataTypes.INTEGER(255),
       allowNull: true
     },
-    opponent: {
-      type: DataTypes.STRING(255),
+    observer: {
+      type: DataTypes.INTEGER(255),
       allowNull: true
     },
     created_at: {
       type: DataTypes.DATE,
-      allowNull: false
+      allowNull: true
     },
     updated_at: {
       type: DataTypes.DATE,
-      allowNull: false
+      allowNull: true
     }
   }, {
-    tableName: 'history_handler'
+    tableName: 'product_authorization'
   });
 };

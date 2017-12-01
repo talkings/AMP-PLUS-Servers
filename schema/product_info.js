@@ -13,7 +13,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     product_describe: {
       type: DataTypes.STRING(255),
-      allowNull: true
+      allowNull: false
     },
     originator_userid: {
       type: DataTypes.STRING(255),
@@ -23,17 +23,17 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING(255),
       allowNull: false
     },
-    master_userid: {
+    swigger: {
       type: DataTypes.STRING(255),
       allowNull: true
     },
-    developer_userid: {
-      type: DataTypes.STRING(255),
-      allowNull: true
+    created_at: {
+      type: DataTypes.DATE,
+      allowNull: false
     },
-    observer_userid: {
-      type: DataTypes.STRING(255),
-      allowNull: true
+    updated_at: {
+      type: DataTypes.DATE,
+      allowNull: false
     }
   }, {
     tableName: 'product_info'
