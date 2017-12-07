@@ -1,9 +1,6 @@
 /**
  * MYSQL Configure
  */
-exports.mysql = {
-	
-};
 exports.mysql = (() => {
 	let config = {
 		prod: {

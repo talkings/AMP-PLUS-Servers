@@ -16,7 +16,7 @@ module.exports = async () => {
             try {
                 db[list[i]] = require(`${basepath}/`);
             } catch (error) {
-                 console.log(error,22222);
+                 console.log(error);
             }
         }
     }
