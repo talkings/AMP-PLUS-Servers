@@ -1,6 +1,5 @@
 
 module.exports =  function( app ){
-	console.log(app.controller);
 	const path = '/users';
 	//user register 注册用户接口
 	this.post(`${ path }/register`, app.controller.users.register )
