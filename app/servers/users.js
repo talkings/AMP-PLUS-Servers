@@ -9,7 +9,7 @@ module.exports = ( app ) => {
 		},
 		//注册添加用户信息
 		async register ( ctx, params){
-			console.log(app.model);
+			console.log(app, 22222);
 			const data = await app.model.mysql.user.create(params);
 			return data;
 		},
