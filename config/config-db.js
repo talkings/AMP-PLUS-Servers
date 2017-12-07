@@ -7,9 +7,9 @@ exports.mysql = {
 	//用户名
 	'username': 'root',
 	//口令
-	'password': '123456',
+	'password': 'yzfqx199110204338',
 	//主机
-	'host': 'localhost',
+	'host': '127.0.0.1',
 	//端口
 	'port': 3306
 };
@@ -20,7 +20,7 @@ exports.mongodb = (() => {
 	
 	let config = {
 		prod: {
-			'basepath': 'mongodb://47.94.105.61:1029/',
+			'basepath': 'mongodb://127.0.0.1:1029/',
 			//数据库
 			'database': 'AMP',
 			//用户名
@@ -28,7 +28,7 @@ exports.mongodb = (() => {
 			//口令
 			'password': 'yzfqx199110204338',
 			//主机
-			'host': '47.94.105.61',
+			'host': '127.0.0.1',
 			//端口
 			'port': 1029
 		},
