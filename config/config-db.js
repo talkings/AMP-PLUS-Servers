@@ -29,7 +29,7 @@ exports.mysql = (() => {
 		}
 	};
 	if (process.env.NODE_ENV === 'production') {
-		return config['prov'];
+		return config['prod'];
 	} else {
 		return config['dev'];
 	}
