@@ -15,8 +15,10 @@ mongoose.connection
         console.log(`mongodb Connection has been established successfully host ${info.host} port ${info.port}`);
     });
     
-mongoose.connect(`${mongodb.basepath}${mongodb.database }`, { 'useMongoClient' : true});
-
+    
+//mongoose.connect(`${mongodb.basepath}${mongodb.database }`, { 'useMongoClient' : true});]
+mongoose.connect(mongodb.connect, { 'useMongoClient': true });
+//mongoose.connect('mongodb://47.94.105.61:1029/AMP', { 'useMongoClient': true });
 //读取文件目录
 fs.readdirSync(path.join(__dirname, './schema')).filter(function (file) {
     return (file.indexOf('.') !== 0);

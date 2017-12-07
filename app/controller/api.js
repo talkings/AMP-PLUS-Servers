@@ -92,7 +92,9 @@ module.exports = function( app ){
             const example = new app.util.tools_proxy({
                 url: result.swigger
             });
-            let config = await example.request();
+            let config = await example.request({
+                url: "http://54.222.232.96:3888/599ee65122b5146633e2d627/swagger"
+            });
             let json = JSON.parse(config);
             if (Object.prototype.toString.call(json) !== '[object Object]'){
                 throw '不是有效配置格式';
@@ -112,6 +114,7 @@ module.exports = function( app ){
                 return app.servers.api.addMongoApiInfo(json);
             });
             const data = await Promise.all(promises);
+            console.log(data, 222);
             if (data) ctx.success({}, 'swagger同步完成');
         }
     };
