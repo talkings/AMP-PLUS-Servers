@@ -17,6 +17,7 @@ exports.mysql = {
  * mongodb Configure
  */
 exports.mongodb = (() => {
+	
 	let config = {
 		prod: {
 			'basepath': 'mongodb://localhost:1029/',
