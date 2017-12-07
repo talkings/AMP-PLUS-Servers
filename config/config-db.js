@@ -19,7 +19,7 @@ exports.mysql = {
 exports.mongodb = (() => {
 	let config = {
 		prod: {
-			'basepath': 'mongodb://127.0.0.1:1029/',
+			'basepath': 'mongodb://localhost:1029/',
 			//数据库
 			'database': 'AMP',
 			//用户名
@@ -27,7 +27,7 @@ exports.mongodb = (() => {
 			//口令
 			'password': 'yzfqx199110204338',
 			//主机
-			'host': '127.0.0.1',
+			'host': 'localhost',
 			//端口
 			'port': 1029
 		},
