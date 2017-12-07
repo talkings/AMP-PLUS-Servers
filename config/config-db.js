@@ -9,7 +9,7 @@ exports.mysql = {
 	//口令
 	'password': 'yzfqx199110204338',
 	//主机
-	'host': '127.0.0.1',
+	'host': 'localhost',
 	//端口
 	'port': 3306
 };
@@ -17,6 +17,7 @@ exports.mysql = {
  * mongodb Configure
  */
 exports.mongodb = (() => {
+	
 	let config = {
 		prod: {
 			'basepath': 'mongodb://localhost:1029/',
@@ -32,7 +33,7 @@ exports.mongodb = (() => {
 			'port': 1029
 		},
 		dev: {
-			'basepath': 'mongodb://127.0.0.1:27017/',
+			'basepath': 'mongodb://localhost:27017/',
 			//数据库
 			'database': 'AMP',
 			//用户名
@@ -40,7 +41,7 @@ exports.mongodb = (() => {
 			//口令
 			'password': '',
 			//主机
-			'host': '127.0.0.1',
+			'host': 'localhost',
 			//端口
 			'port': 27017
 
