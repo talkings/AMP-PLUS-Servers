@@ -3,7 +3,7 @@
  */
 exports.mysql = {
 	//数据库
-	'database': 'AMP',
+	'database': 'amp',
 	//用户名
 	'username': 'root',
 	//口令
