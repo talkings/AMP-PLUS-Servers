@@ -119,6 +119,7 @@ class rock {
     async getModelInterface(){
         let code = require(this.path.model),
             obj = await code();
+        console.log(obj);
         this.inspect.app.model = obj;
     }
     /**
