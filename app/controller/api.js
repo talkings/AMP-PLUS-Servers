@@ -114,7 +114,6 @@ module.exports = function( app ){
                 return app.servers.api.addMongoApiInfo(json);
             });
             const data = await Promise.all(promises);
-            console.log(data, 222);
             if (data) ctx.success({}, 'swagger同步完成');
         }
     };
