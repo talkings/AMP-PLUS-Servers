@@ -2,22 +2,46 @@
  * MYSQL Configure
  */
 exports.mysql = {
-	//数据库
-	'database': 'amp',
-	//用户名
-	'username': 'root',
-	//口令
-	'password': 'yzfqx199110204338',
-	//主机
-	'host': 'localhost',
-	//端口
-	'port': 3306
+	
 };
+exports.mysql = (() => {
+	let config = {
+		prod: {
+			//数据库
+			'database': 'amp',
+			//用户名
+			'username': 'root',
+			//口令
+			'password': 'yzfqx199110204338',
+			//主机
+			'host': 'localhost',
+			//端口
+			'port': 3306
+		},
+		dev: {
+			//数据库
+			'database': 'amp',
+			//用户名
+			'username': 'root',
+			//口令
+			'password': '123456',
+			//主机
+			'host': 'localhost',
+			//端口
+			'port': 3306
+		}
+	};
+	if (process.env.NODE_ENV === 'production') {
+		return config['prov'];
+	} else {
+		return config['dev'];
+	}
+})();
 /**
  * mongodb Configure
  */
 exports.mongodb = (() => {
-	
+
 	let config = {
 		prod: {
 			'basepath': 'mongodb://localhost:1029/',
