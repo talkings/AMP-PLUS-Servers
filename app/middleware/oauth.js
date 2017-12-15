@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const auth = require('../../config/auth-config.js');
+const auth = require('../../config/config-secret.js');
 
 /**
  * 请求权限鉴定
@@ -19,7 +19,6 @@ module.exports = async (ctx, next) => {
 		} catch (e){
 			ctx.body = e;
 		}
-		
 		
 	} else {
 		await next();

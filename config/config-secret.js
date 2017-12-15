@@ -1,6 +1,6 @@
 module.exports = {
 	//秘钥
-	'secret' : 'languang',
+	'secret' : '20171029',
 	//加密方式
-	'algorithm' : 'HS512'
+	'algorithm' : 'HS256'
 };

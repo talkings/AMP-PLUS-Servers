@@ -7,11 +7,9 @@ const Router = require('koa-router');
 
 module.exports = async function (){
     const app = new Koa();
-    const router = new Router();
     await this.renderMiddleware( app );
-    await this.renderRouter( app, router );
-    app.on('error', function(err, ctx){
-        //ctx.throw();
+    await this.renderRouter(app, Router );
+    app.on('error', function(err){
         console.log(`The service start error msg:${ err }`);
     });
     http.createServer(app.callback()).listen(this.options.port);

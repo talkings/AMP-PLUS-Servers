@@ -27,8 +27,8 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING(255),
       allowNull: false
     },
-    login_date: {
-      type: DataTypes.DATE,
+    login_token: {
+      type: DataTypes.STRING(255),
       allowNull: true
     },
     created_at: {

@@ -1,0 +1,9 @@
+# rename this file to .env
+
+ESPUB_MYSQL_SECRET_DEV = "password"
+
+ESPUB_MYSQL_SECRET_PROV = "password"
+
+ESPUB_MONGODB_SECRET_DEV = "password"
+
+ESPUB_MONGODB_SECRET_PROV = "password"

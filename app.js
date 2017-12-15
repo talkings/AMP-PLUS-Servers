@@ -3,5 +3,6 @@
  */
 
 require('./core/main').startCluster({
-    'port' : process.env.PORT || 3000
+    'port' : 3999,
+    'version' : 'v1'
 });

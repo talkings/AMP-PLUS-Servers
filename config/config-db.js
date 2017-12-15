@@ -9,7 +9,7 @@ exports.mysql = (() => {
 			//用户名
 			'username': 'root',
 			//口令
-			'password': 'yzfqx199110204338',
+			'password': process.env.ESPUB_MYSQL_SECRET_PROV,
 			//主机
 			'host': 'localhost',
 			//端口
@@ -21,7 +21,7 @@ exports.mysql = (() => {
 			//用户名
 			'username': 'root',
 			//口令
-			'password': '123456',
+			'password': process.env.ESPUB_MYSQL_SECRET_DEV,
 			//主机
 			'host': 'localhost',
 			//端口
@@ -47,7 +47,7 @@ exports.mongodb = (() => {
 			//用户名
 			'username': 'AMPPLUS',
 			//口令
-			'password': 'yzfqx199110204338',
+			'password': process.env.ESPUB_MONGODB_SECRET_DEV,
 			//主机
 			'host': 'localhost',
 			//端口
@@ -60,7 +60,7 @@ exports.mongodb = (() => {
 			//用户名
 			'username': '',
 			//口令
-			'password': '',
+			'password': process.env.ESPUB_MONGODB_SECRET_PROV,
 			//主机
 			'host': 'localhost',
 			//端口

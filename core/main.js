@@ -3,6 +3,7 @@ const context = require('./src/context');
 const path = require('path');
 const util = require('util');
 const fs = require('fs');
+const Dotenv = require('dotenv');
 /**
  * 上下文管理实例
  */
@@ -68,14 +69,16 @@ class rock {
     /**
      * 初始化路由
      */
-    async renderRouter (app, router){
+    async renderRouter (app, Router){
         const fn = await this.readFileInterface('router');
-        //设置请求前缀
-        router.prefix(`/v1`);
         for (let j in fn) {
+            let router = new Router();
+            //设置请求前缀
+            router.prefix(`/${ this.options.version }/${ j }`);
             fn[j].call(router, this.inspect.app);
-        }
-        app.use(router.routes(), router.allowedMethods());
+            app.use(router.routes());
+            app.use(router.allowedMethods());
+        }   
     }
     /**
      * 渲染全局配置
@@ -96,7 +99,6 @@ class rock {
         //遍历中间件配置序列
         (plugin.middleware || []).forEach(( item ) => {
             if (keys.includes(item)){
-                // console.log(fn[item]());
                 if (plugin[item]){
                     app.use(fn[item](plugin[item]));
                 } else {
@@ -144,11 +146,24 @@ class rock {
         this.inspect.app.controller = obj;
        
     }
+    async globalEnv() {
+        try {
+            //dotenv从一个.env文件中读取环境变量到process.env中
+            //process.env会返回一个所有环境变量的对象
+            const result = Dotenv.config();
+            if (result.error) {
+                throw result.error;
+            }
+        } catch (error) {
+            console.log('没有.env文件，将会从 process.env 中读取');
+        }
+    }
     /**
      * 启动上下文
      */
     async startCluster ( options ){
         this.options = options;
+        await this.globalEnv();
         await this.renderConfig();
         await this.getModelInterface();
         await this.getServersInterface();

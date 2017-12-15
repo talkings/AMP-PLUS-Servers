@@ -19,8 +19,8 @@ module.exports = function(sequelize, DataTypes) {
       //不可以重复
       unique: true
     },
-    login_date : {
-      type: DataTypes.DATE,
+    login_token : {
+      type: DataTypes.STRING,
       allowNull: true
     },
     phone: {

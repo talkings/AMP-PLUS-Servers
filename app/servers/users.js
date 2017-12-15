@@ -7,20 +7,29 @@ module.exports = ( app ) => {
 			const data = await app.model.mysql.user.findAll();
 			return data;
 		},
-		//注册添加用户信息
-		async register ( ctx, params){
-			const data = await app.model.mysql.user.create(params);
-			return data;
+		//插入用户信息
+		async addUserInfo ( option ){
+			return app.model.mysql.user.create(option);
 		},
-		async login (ctx, params){
-			const data = await app.model.mysql.user.findOne({
+		/**
+		 * 判断用户是否存在 
+		 */
+		async isUserExist ( params ){
+			return app.model.mysql.user.findOne({
 				attributes : ['id', 'email'],
 				where: {
 					email: params.email,
 					password: params.password
 				}
 			});
-			return data;
+		},
+		/**
+		 * 修改用户信息
+		 * @param {*} option 
+		 * @param {*} whereis 
+		 */
+		async setUserInfo ( option, whereis ){
+			return app.model.mysql.user.update( option, whereis );
 		}
 	};
 	return User;
