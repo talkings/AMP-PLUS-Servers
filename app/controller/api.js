@@ -83,7 +83,7 @@ module.exports = function( app ){
             const result = await app.servers.api.getMysqlApiInfo({
                 attributes: ['swigger'],
                 where: {
-                    product_id: projectid
+                    id: projectid
                 }
             });
             if (result.swigger == null) {

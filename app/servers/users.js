@@ -3,9 +3,8 @@ module.exports = ( app ) => {
 		/**
 		 * 查询用户信息表字段
 		 */
-		async searchField () {
-			const data = await app.model.mysql.user.findAll();
-			return data;
+		async getUserInfo (options = {} ) {
+			return app.model.mysql.user.findAll(options);
 		},
 		//插入用户信息
 		async addUserInfo ( option ){

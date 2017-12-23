@@ -9,7 +9,7 @@ module.exports = function( app ){
                 mysql.sequelize.transaction().then((t) => {
                     //查询在用户下是否存在相同的项目名称
                     return mysql.product_info.find({
-                        attributes: ['product_id'],
+                        attributes: ['id'],
                         where: {
                             $and: [{
                                 product_name: params.productName
@@ -21,7 +21,7 @@ module.exports = function( app ){
                         if (!result) {
                             //创建项目
                             return mysql.product_info.create({
-                                product_name: params.productName,
+                                product_name: params.productName.trim(),
                                 product_describe: params.productDescribe,
                                 originator_userid: params.userid,
                                 originator_name: params.userName,

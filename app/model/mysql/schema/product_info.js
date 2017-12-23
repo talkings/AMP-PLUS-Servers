@@ -2,7 +2,7 @@
 
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('product_info', {
-    product_id: {
+    id: {
       type: DataTypes.STRING,
       unique: true,
       primaryKey: true,
@@ -11,7 +11,10 @@ module.exports = function(sequelize, DataTypes) {
     },
     product_name: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+      validate: {
+        notEmpty: true
+      }
     },
     product_describe: {
       type: DataTypes.STRING,

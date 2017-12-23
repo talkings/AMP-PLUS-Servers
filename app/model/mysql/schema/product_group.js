@@ -38,7 +38,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: true,
       comment: '创建人',
     },
-    product_id: {
+    id: {
       type: DataTypes.STRING,
       allowNull: true,
       comment: '项目唯一标识',
