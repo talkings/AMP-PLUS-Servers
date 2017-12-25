@@ -50,9 +50,9 @@ module.exports = ( schema ) => {
             'required': true
         },
         //请求报文
-        'req' : {},
+        'req': String,
         //返回报文
-        'res' : {},
+        'res': String,
         //创建时间
         'created_at' : {
             'type' : Date,

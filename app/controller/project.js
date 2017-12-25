@@ -15,11 +15,20 @@ module.exports = function( app ){
 
         },
         /**
-         * 获取mock项目信息
+         * 获取mock项目信息列表
          */ 
-        async getMockProduct( ctx ) {
+        async getMockProductList( ctx ) {
             const params = ctx.query;
-            const data = await app.servers.project.getMockProduct(ctx, params);
+            const data = await app.servers.project.getMockProductList(ctx, params);
+            if (data) ctx.success(data);
+        },
+        /**
+         * 获取项目信息
+         * @param {*} ctx 
+         */
+        async getMockProductInfo( ctx ) {
+            const params = ctx.query;
+            const data = await app.servers.project.searchProjectInfo(ctx, params);
             if (data) ctx.success(data);
         }
     };

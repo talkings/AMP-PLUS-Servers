@@ -67,8 +67,8 @@ module.exports = function( app ){
                 group: body.group,
                 originatorId: body.userid,
                 params: body.params,
-                req: body.req,
-                res: body.res
+                req: JSON.stringify(body.req),
+                res: JSON.stringify(body.res)
             };
             const data = await app.servers.api.addMongoApiInfo(json);
             if (data) ctx.success(data);

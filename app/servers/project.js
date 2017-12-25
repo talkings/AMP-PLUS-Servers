@@ -25,6 +25,7 @@ module.exports = function( app ){
                                 product_describe: params.productDescribe,
                                 originator_userid: params.userid,
                                 originator_name: params.userName,
+                                version: params.version
                             });
                         } else {
                             throw '项目重复创建';
@@ -46,10 +47,13 @@ module.exports = function( app ){
         async setMockProduct() {
 
         },
+        async searchProjectInfo (ctx, params) {
+            return mysql.product_info.findById(params.id);
+        },
         /**
          * 获取mock项目信息
          */
-        async getMockProduct(ctx, params) {
+        async getMockProductList(ctx, params) {
             //跳过 x 条数据并获取其后的 x 条数据
             const current = Number(params.current);
             //每页显示多少条
@@ -61,9 +65,9 @@ module.exports = function( app ){
                         ['updated_at', 'DESC']
                     ],
                     where: {
-                        $and: [{
+                        $and: [Object.assign({
                             originator_userid: params.userid
-                        }]
+                        }, (params.productName ? { product_name: params.productName} : {}))]
                     }
                 });
         }

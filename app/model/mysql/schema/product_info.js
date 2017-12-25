@@ -9,6 +9,13 @@ module.exports = function(sequelize, DataTypes) {
       defaultValue: DataTypes.UUIDV4,
       comment: '项目唯一标识',
     },
+    version: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          notEmpty: true
+        }
+    },
     product_name: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -22,15 +29,21 @@ module.exports = function(sequelize, DataTypes) {
     },
     originator_userid: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+      validate: {
+        notEmpty: true
+      }
     },
     originator_name: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+      validate: {
+        notEmpty: true
+      }
     },
     swigger: {
       type: DataTypes.STRING,
-      allowNull: true
+      allowNull: true,
     }
   }, {
     tableName: 'product_info',
